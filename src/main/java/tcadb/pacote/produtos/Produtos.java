@@ -1,23 +1,25 @@
-package org.testando.produtos;
+package tcadb.pacote.produtos;
 
 public class Produtos {
 
-      private String Nome;
-      private double Preco;
+    private String nome;
+    private double preco;
+
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
     }
 
     public double getPreco() {
-        return Preco;
+        return preco;
     }
 
     public void setPreco(double preco) {
-        Preco = preco;
+        this.preco = preco;
     }
+
 }
