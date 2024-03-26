@@ -8,7 +8,7 @@ public class Conexao {
 
     private static final String URL = "jdbc:mysql://localhost:3306/tca_bd";
     private static final String USER = "root";
-    private static final String PASSWORD = "55555"; // trocar a senha para "666666" quando for usar no curso
+    private static final String PASSWORD = "666666"; // trocar a senha para "666666" quando for usar no curso
 
     private static Connection conn;
 
