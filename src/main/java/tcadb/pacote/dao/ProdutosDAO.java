@@ -26,24 +26,26 @@ public class ProdutosDAO {
         String sql = "INSERT INTO tb_produtos (Nome, Preco)" +
                 " VALUES (?, ?) ";
 
-        PreparedStatement ps = null;
+        Connection conn;
+        PreparedStatement ps;
 
         try {
-            ps = Conexao.getConexao().prepareStatement(sql);
+            conn = Conexao.getConexao();
+            ps = conn.prepareStatement(sql);
             ps.setString(1, produtos.getNome());
             ps.setDouble(2, produtos.getPreco());
 
 
             ps.execute();
             ps.close();
-
+            conn.close();
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
         return produtos;
     }
 
-    public List<Produtos> listar(){
+    public List<Produtos> listar() {
         String sql = "select * from tb_produtos";
 
         List<Produtos> produtos = new ArrayList<>();
@@ -52,12 +54,12 @@ public class ProdutosDAO {
         PreparedStatement ps;
         ResultSet rs;
 
-        try{
+        try {
             conn = Conexao.getConexao();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery(); // realização de consulta
 
-            while (rs.next()){
+            while (rs.next()) {
                 Produtos produto = new Produtos();
 
                 produto.setNome(rs.getString(1)); // recuperar nome SQL
@@ -65,14 +67,43 @@ public class ProdutosDAO {
 
                 produtos.add(produto);
             }
+
+
             rs.close();
             ps.close();
             conn.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return produtos;
     }
 
+    public void remover(){
+        Scanner leitura = new Scanner(System.in);
+
+        System.out.println("Qual produto gostaria de remover da tabela?");
+        String escolhaRemocao = leitura.nextLine();
+
+        String sql = "DELETE FROM tb_produtos WHERE Nome = ?";
+
+        Connection conn;
+        PreparedStatement ps;
+
+
+        try{
+            conn = Conexao.getConexao();
+            ps = conn.prepareStatement(sql);
+
+            ps.setString(1, escolhaRemocao);
+            System.out.println("Produto " + escolhaRemocao + " removido com sucesso!");
+
+            ps.execute();
+            ps.close();
+            conn.close();
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

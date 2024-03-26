@@ -1,7 +1,9 @@
 package tcadb.pacote.conexao;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
@@ -16,15 +18,21 @@ public class Conexao {
 
     public static Connection getConexao() {
         try {
-            if(conn == null) {
-                //System.out.println("Conectando ao Banco de Dados...");
-                // cria conexão com o BD
-                conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            }
-            //System.out.println("Conexão obtida com sucesso!\n");
+            conn = createDataSource().getConnection();
             return conn;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static HikariDataSource createDataSource() {
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl(URL);
+        config.setUsername(USER);
+        config.setPassword(PASSWORD);
+        config.setMaximumPoolSize(10);
+
+        return new HikariDataSource(config);
     }
 }
