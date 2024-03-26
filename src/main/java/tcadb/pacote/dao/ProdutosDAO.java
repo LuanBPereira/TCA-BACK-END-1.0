@@ -24,7 +24,7 @@ public class ProdutosDAO {
 
 
         String sql = "INSERT INTO tb_produtos (Nome, Preco)" +
-                " VALUES (?, ?) ";
+                "VALUES (?, ?) ";
 
         Connection conn;
         PreparedStatement ps;
@@ -35,10 +35,13 @@ public class ProdutosDAO {
             ps.setString(1, produtos.getNome());
             ps.setDouble(2, produtos.getPreco());
 
-
             ps.execute();
             ps.close();
             conn.close();
+            // verificação para ver se a conexão foi fechada
+            /* if (conn.isClosed()) {
+                System.out.println("A conexão foi encerrada corretamente.");
+            } */
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
@@ -46,7 +49,7 @@ public class ProdutosDAO {
     }
 
     public List<Produtos> listar() {
-        String sql = "select * from tb_produtos";
+        String sql = "SELECT * FROM tb_produtos";
 
         List<Produtos> produtos = new ArrayList<>();
 
@@ -62,30 +65,30 @@ public class ProdutosDAO {
             while (rs.next()) {
                 Produtos produto = new Produtos();
 
-                produto.setNome(rs.getString(1)); // recuperar nome SQL
-                produto.setPreco(rs.getDouble(2)); // recuperar preco SQL
+                produto.setCodigoP(rs.getInt(1));
+                produto.setNome(rs.getString(2)); // recuperar nome SQL
+                produto.setPreco(rs.getDouble(3)); // recuperar preco SQL
 
                 produtos.add(produto);
             }
 
-
             rs.close();
             ps.close();
             conn.close();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return produtos;
     }
 
-    public void remover(){
+    public void remover() {
         Scanner leitura = new Scanner(System.in);
+        Produtos produtos = new Produtos();
 
         System.out.println("Qual produto gostaria de remover da tabela?");
-        String escolhaRemocao = leitura.nextLine();
+        Integer escolhaRemocao = leitura.nextInt();
 
-        String sql = "DELETE FROM tb_produtos WHERE Nome = ?";
+        String sql = "DELETE FROM tb_produtos WHERE codigoP = ?";
 
         Connection conn;
         PreparedStatement ps;
@@ -95,14 +98,71 @@ public class ProdutosDAO {
             conn = Conexao.getConexao();
             ps = conn.prepareStatement(sql);
 
-            ps.setString(1, escolhaRemocao);
-            System.out.println("Produto " + escolhaRemocao + " removido com sucesso!");
+            ps.setInt(1, escolhaRemocao);
+            System.out.println("Produto do código: " + escolhaRemocao + " " +  " " +
+                    "removido com sucesso!");
 
             ps.execute();
             ps.close();
             conn.close();
         }  catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void modificar() {
+        Scanner leitura = new Scanner(System.in);
+
+        System.out.println("Nome/Preco");
+        String nomeOuPreco = leitura.nextLine();
+
+        System.out.println("Digite o código do produto:");
+        int codigoProduto = leitura.nextInt();
+
+        // Limpar o buffer após a leitura do número inteiro
+        leitura.nextLine();
+
+        Connection conn;
+        PreparedStatement ps;
+        String sql;
+
+        if (nomeOuPreco.equalsIgnoreCase("nome")) {
+            System.out.println("Digite o novo nome:");
+            String novoNome = leitura.nextLine();
+            sql = "UPDATE tb_produtos SET nome = ? WHERE codigoP = ?";
+
+            try {
+                conn = Conexao.getConexao();
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, novoNome);
+                ps.setInt(2, codigoProduto);
+                ps.executeUpdate();
+                ps.close();
+                conn.close();
+                System.out.println("Nome do produto atualizado com sucesso!");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        } else if (nomeOuPreco.equalsIgnoreCase("preco")) {
+            System.out.println("Digite o novo preço:");
+            double novoPreco = leitura.nextDouble();
+            sql = "UPDATE tb_produtos SET preco = ? WHERE codigoP = ?";
+
+            try {
+                conn = Conexao.getConexao();
+                ps = conn.prepareStatement(sql);
+                ps.setDouble(1, novoPreco);
+                ps.setInt(2, codigoProduto);
+                ps.executeUpdate();
+                ps.close();
+                conn.close();
+                System.out.println("Preço do produto atualizado com sucesso!");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Opção inválida. Por favor, escolha 'nome' ou 'preco'.");
         }
     }
 }

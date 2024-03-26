@@ -12,10 +12,9 @@ public class MainFuncionario {
     private static Scanner leitor = new Scanner(System.in).useDelimiter("\n");
 
     public static void main(String[] args) {
-
         var opcao = exibirMenu();
         try {
-            while (opcao != 4) {
+            while (opcao != 5) {
                 switch (opcao) {
                     case 1:
                         listarProdutosCadastrados();
@@ -26,13 +25,15 @@ public class MainFuncionario {
                     case 3:
                         removerProdutos();
                         break;
+                    case 4:
+                        modificarDadosProdutos();
                 }
                 opcao = exibirMenu();
             }
         } catch (SQLException e){
             e.printStackTrace();
-
         }
+        System.out.println("Encerrando programa...");
     }
 
     private static int exibirMenu() {
@@ -41,7 +42,8 @@ public class MainFuncionario {
                 1 - Listar produtos cadastrados
                 2 - Cadastrar novo produto
                 3 - Remover um produto
-                4 - Sair
+                4 - Modificar dados de produto
+                5 - sair
                 """);
         return leitor.nextInt();
     }
@@ -49,10 +51,10 @@ public class MainFuncionario {
     public static void listarProdutosCadastrados() throws SQLException {
         ProdutosDAO produtosDAO = new ProdutosDAO();
 
-
         System.out.println("Produtos cadastrados: ");
         for(Produtos p : produtosDAO.listar()){
-            System.out.println( "(" + p.getNome() + "," + " R$" + p.getPreco() + ")" );
+            System.out.println( "(" + p.getCodigoP() + ", " + p.getNome() + ","
+                    + " R$" + p.getPreco() + ")" );
         }
 
         //Conexao.getConexao().close();
@@ -76,6 +78,14 @@ public class MainFuncionario {
         produtosDAO.remover();
 
         //Conexao.getConexao().close();
+        System.out.println("\nClique qualquer tecla para retornar ao menu");
+        leitor.next();
+    }
+
+    public static void modificarDadosProdutos(){
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        produtosDAO.modificar();
+
         System.out.println("\nClique qualquer tecla para retornar ao menu");
         leitor.next();
     }
