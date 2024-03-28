@@ -60,7 +60,6 @@ public class MainFuncionario {
                     + " R$" + p.getPreco() + ")" );
         }
 
-        //Conexao.getConexao().close();
         System.out.println("\nClique qualquer tecla para retornar ao menu");
         leitor.next();
     }
@@ -70,7 +69,6 @@ public class MainFuncionario {
         Produtos produtoCadastrado =  produtosDAO.cadastrar();
         System.out.println("Produto " + "[" +produtoCadastrado.getNome() +"]" + " cadastrado!");
 
-        //Conexao.getConexao().close();
         System.out.println("\nClique qualquer tecla para retornar ao menu");
         leitor.next();
     }
@@ -80,7 +78,6 @@ public class MainFuncionario {
         produtosDAO.listar().forEach(listar -> System.out.println("(" + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.remover();
 
-        //Conexao.getConexao().close();
         System.out.println("\nClique qualquer tecla para retornar ao menu");
         leitor.next();
     }

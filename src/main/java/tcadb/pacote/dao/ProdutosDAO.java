@@ -83,7 +83,7 @@ public class ProdutosDAO {
 
     public void remover() {
         Scanner leitura = new Scanner(System.in);
-        Produtos produtos = new Produtos();
+
 
         System.out.println("Qual produto gostaria de remover da tabela?");
         Integer escolhaRemocao = leitura.nextInt();
