@@ -39,7 +39,7 @@ public class MainFuncionario {
     private static int exibirMenu() {
         System.out.println("""
                 ——————————————————————————————————————
-                |        𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕       |
+                |        𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕      |
                 |         𝔼𝕤𝕔𝕠𝕝𝕙𝕒 𝕦𝕞𝕒 𝕠𝕡𝕔̧𝕒̃𝕠:         |
                 | 1 - Listar produtos cadastrados    |
                 | 2 - Cadastrar novo produto         |
@@ -75,7 +75,7 @@ public class MainFuncionario {
 
     public static void removerProdutos() throws SQLException {
         ProdutosDAO produtosDAO = new ProdutosDAO();
-        produtosDAO.listar().forEach(listar -> System.out.println("(" + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
+        produtosDAO.listar().forEach(listar -> System.out.println("(" +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.remover();
 
         System.out.println("\nClique qualquer tecla para retornar ao menu");
@@ -84,6 +84,7 @@ public class MainFuncionario {
 
     public static void modificarDadosProdutos(){
         ProdutosDAO produtosDAO = new ProdutosDAO();
+        produtosDAO.listar().forEach(listar -> System.out.println("(" +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.modificar();
 
         System.out.println("\nClique qualquer tecla para retornar ao menu");
