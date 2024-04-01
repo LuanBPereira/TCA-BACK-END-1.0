@@ -84,14 +84,14 @@ public class ProdutosDAO {
     public void remover() {
         Scanner leitura = new Scanner(System.in);
 
-        System.out.println("Qual produto gostaria de remover da tabela?");
+        System.out.println("Qual produto gostaria de remover da tabela?" +
+                "\nDigite o código do produto para remove-lo.");
         int escolhaRemocao = leitura.nextInt();
 
         String sql = "DELETE FROM tb_produtos WHERE codigoP = ?";
 
         Connection conn;
         PreparedStatement ps;
-
 
         try{
             conn = Conexao.getConexao();
@@ -112,13 +112,13 @@ public class ProdutosDAO {
     public void modificar() {
         Scanner leitura = new Scanner(System.in);
 
-        System.out.println("Você deseja modificar Nome ou Preco do Produto?");
+        System.out.println("O que você quer mudar na tabela? Nome/Preco");
         String nomeOuPreco = leitura.nextLine();
 
         System.out.println("Digite o código do produto:");
         int codigoProduto = leitura.nextInt();
 
-        // Limpar o buffer após a leitura do número inteiro
+        // Limpar o buffer (o \n) após a leitura do número inteiro
         leitura.nextLine();
 
         Connection conn;
@@ -135,6 +135,7 @@ public class ProdutosDAO {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, novoNome);
                 ps.setInt(2, codigoProduto);
+
                 ps.executeUpdate();
                 ps.close();
                 conn.close();
@@ -144,7 +145,7 @@ public class ProdutosDAO {
             }
 
         } else if (nomeOuPreco.equalsIgnoreCase("preco")) {
-            System.out.println("Digite o novo preço: ");
+            System.out.println("Digite o novo preço:");
             double novoPreco = leitura.nextDouble();
             sql = "UPDATE tb_produtos SET preco = ? WHERE codigoP = ?";
 
@@ -153,6 +154,7 @@ public class ProdutosDAO {
                 ps = conn.prepareStatement(sql);
                 ps.setDouble(1, novoPreco);
                 ps.setInt(2, codigoProduto);
+
                 ps.executeUpdate();
                 ps.close();
                 conn.close();
@@ -165,3 +167,4 @@ public class ProdutosDAO {
         }
     }
 }
+
