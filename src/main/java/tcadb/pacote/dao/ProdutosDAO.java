@@ -83,10 +83,9 @@ public class ProdutosDAO {
 
     public void remover() {
         Scanner leitura = new Scanner(System.in);
-        Produtos produtos = new Produtos();
 
         System.out.println("Qual produto gostaria de remover da tabela?");
-        Integer escolhaRemocao = leitura.nextInt();
+        int escolhaRemocao = leitura.nextInt();
 
         String sql = "DELETE FROM tb_produtos WHERE codigoP = ?";
 
@@ -113,7 +112,7 @@ public class ProdutosDAO {
     public void modificar() {
         Scanner leitura = new Scanner(System.in);
 
-        System.out.println("Nome/Preco");
+        System.out.println("Você deseja modificar Nome ou Preco do Produto?");
         String nomeOuPreco = leitura.nextLine();
 
         System.out.println("Digite o código do produto:");
@@ -145,7 +144,7 @@ public class ProdutosDAO {
             }
 
         } else if (nomeOuPreco.equalsIgnoreCase("preco")) {
-            System.out.println("Digite o novo preço:");
+            System.out.println("Digite o novo preço: ");
             double novoPreco = leitura.nextDouble();
             sql = "UPDATE tb_produtos SET preco = ? WHERE codigoP = ?";
 
@@ -166,4 +165,3 @@ public class ProdutosDAO {
         }
     }
 }
-
