@@ -1,4 +1,4 @@
-package tcadb.pacote.produtos;
+package tcadb.pacote.models;
 
 public class Produtos {
 

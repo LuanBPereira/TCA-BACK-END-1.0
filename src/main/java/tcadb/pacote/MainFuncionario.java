@@ -2,7 +2,7 @@ package tcadb.pacote;
 
 
 import tcadb.pacote.dao.ProdutosDAO;
-import tcadb.pacote.produtos.Produtos;
+import tcadb.pacote.models.Produtos;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -39,7 +39,7 @@ public class MainFuncionario {
     private static int exibirMenu() {
         System.out.println("""
                 ——————————————————————————————————————
-                |        𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕      |
+                |        𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕       |
                 |         𝔼𝕤𝕔𝕠𝕝𝕙𝕒 𝕦𝕞𝕒 𝕠𝕡𝕔̧𝕒̃𝕠:         |
                 | 1 - Listar produtos cadastrados    |
                 | 2 - Cadastrar novo produto         |
@@ -51,7 +51,7 @@ public class MainFuncionario {
         return leitor.nextInt();
     }
 
-    public static void listarProdutosCadastrados() throws SQLException {
+    private static void listarProdutosCadastrados() throws SQLException {
         ProdutosDAO produtosDAO = new ProdutosDAO();
 
         System.out.println("Produtos cadastrados: ");
@@ -64,7 +64,7 @@ public class MainFuncionario {
         leitor.next();
     }
 
-    public static void cadastrarProdutos() throws SQLException {
+    private static void cadastrarProdutos() throws SQLException {
         ProdutosDAO produtosDAO = new ProdutosDAO();
         Produtos produtoCadastrado =  produtosDAO.cadastrar();
         System.out.println("Produto " + "[" +produtoCadastrado.getNome() +"]" + " cadastrado!");
@@ -73,7 +73,7 @@ public class MainFuncionario {
         leitor.next();
     }
 
-    public static void removerProdutos() throws SQLException {
+    private static void removerProdutos() throws SQLException {
         ProdutosDAO produtosDAO = new ProdutosDAO();
         produtosDAO.listar().forEach(listar -> System.out.println("(" +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.remover();
@@ -82,7 +82,7 @@ public class MainFuncionario {
         leitor.next();
     }
 
-    public static void modificarDadosProdutos(){
+    private static void modificarDadosProdutos(){
         ProdutosDAO produtosDAO = new ProdutosDAO();
         produtosDAO.listar().forEach(listar -> System.out.println("(" +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.modificar();

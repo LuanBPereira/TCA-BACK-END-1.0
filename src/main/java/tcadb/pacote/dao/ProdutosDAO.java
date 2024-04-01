@@ -1,7 +1,7 @@
 package tcadb.pacote.dao;
 
 import tcadb.pacote.conexao.Conexao;
-import tcadb.pacote.produtos.Produtos;
+import tcadb.pacote.models.Produtos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
