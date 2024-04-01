@@ -77,7 +77,8 @@ public class MainFuncionario {
 
     public static void removerProdutos() throws SQLException {
         ProdutosDAO produtosDAO = new ProdutosDAO();
-        produtosDAO.listar().forEach(listar -> System.out.println("(" + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
+        produtosDAO.listar().forEach(listar -> System.out.println("(" + listar.getNome()
+                + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.remover();
 
         //Conexao.getConexao().close();
