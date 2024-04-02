@@ -1,6 +1,6 @@
 package tcadb.pacote.dao;
 
-import tcadb.pacote.conexao.Conexao;
+import tcadb.pacote.connection.Conexao;
 import tcadb.pacote.models.Produtos;
 
 import java.sql.Connection;
@@ -79,6 +79,36 @@ public class ProdutosDAO {
             throw new RuntimeException(e);
         }
         return produtos;
+    }
+
+    public Produtos buscarPorId(int codigo) {
+        String sql = "SELECT * FROM tb_produtos WHERE codigoP = ?";
+
+        Connection conn;
+        PreparedStatement ps;
+        ResultSet rs;
+        Produtos produto = null;
+
+        try {
+            conn = Conexao.getConexao();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                produto = new Produtos();
+                produto.setCodigoP(rs.getInt("codigoP"));
+                produto.setNome(rs.getString("Nome"));
+                produto.setPreco(rs.getDouble("Preco"));
+            }
+
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return produto;
     }
 
     public void remover() {
@@ -166,5 +196,7 @@ public class ProdutosDAO {
             System.out.println("Opção inválida. Por favor, escolha 'nome' ou 'preco'.");
         }
     }
+
+    // https://chat.openai.com/share/65a6a4d2-f4f1-42e4-9cde-7f1c5c224de4
 }
 

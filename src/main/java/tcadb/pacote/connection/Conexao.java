@@ -1,4 +1,4 @@
-package tcadb.pacote.conexao;
+package tcadb.pacote.connection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
