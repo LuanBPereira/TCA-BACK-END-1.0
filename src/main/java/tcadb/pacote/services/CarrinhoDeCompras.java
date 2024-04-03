@@ -1,11 +1,9 @@
 package tcadb.pacote.services;
 
-import tcadb.pacote.dao.ProdutosDAO;
 import tcadb.pacote.models.Produtos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CarrinhoDeCompras {
     private List<ItemDeCompra> itens;
@@ -31,7 +29,8 @@ public class CarrinhoDeCompras {
         itens.removeIf(item -> item.getProduto().getCodigoP().equals(codigoProduto));
     }
 
-    public void listarProdutosNoCarrinho() {
+    public void listarProdutosAdicionados() {
+        // Verifica se há produtos no carrinho de compras
         if (itens.isEmpty()) {
             System.out.println("O carrinho de compras está vazio.");
         } else {
@@ -45,15 +44,15 @@ public class CarrinhoDeCompras {
         }
     }
 
-
     public List<ItemDeCompra> getItens() {
         return itens;
     }
 
+
     public double calcularTotal() {
         double total = 0.0;
         for (ItemDeCompra item : itens) {
-            total += item.getSubtotal();
+            total += item.getSubtotal() * 0.2; // 0.2 é a taxa de entrega
         }
         return total;
     }

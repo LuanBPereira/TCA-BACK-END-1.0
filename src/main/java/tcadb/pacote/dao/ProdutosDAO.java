@@ -81,7 +81,7 @@ public class ProdutosDAO {
         return produtos;
     }
 
-    public Produtos buscarPorId(int codigo) {
+    public Produtos listarPorId(int codigo) {
         String sql = "SELECT * FROM tb_produtos WHERE codigoP = ?";
 
         Connection conn;

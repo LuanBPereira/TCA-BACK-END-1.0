@@ -3,6 +3,7 @@ package tcadb.pacote;
 import tcadb.pacote.dao.ProdutosDAO;
 import tcadb.pacote.models.Produtos;
 import tcadb.pacote.services.CarrinhoDeCompras;
+import tcadb.pacote.services.ItemDeCompra;
 
 import java.util.List;
 import java.util.Scanner;
@@ -61,14 +62,14 @@ public class MainCliente {
     }
 
     public static void listarProdutosCarrinho(){
-        carrinho.listarProdutosNoCarrinho();
-        carrinho.calcularTotal();
+            carrinho.listarProdutosAdicionados();
+
     }
 
     private static void adicionarItemCarrinhoDeCompras() {
         System.out.println("Digite o código do produto que deseja adicionar ao carrinho:");
         int codigoProduto = leitor.nextInt();
-        Produtos produto = produtosDAO.buscarPorId(codigoProduto);
+        Produtos produto = produtosDAO.listarPorId(codigoProduto);
         if (produto != null) {
             System.out.println("Digite a quantidade desejada:");
             int quantidade = leitor.nextInt();
