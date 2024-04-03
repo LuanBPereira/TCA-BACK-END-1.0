@@ -1,5 +1,7 @@
 package tcadb.pacote.services;
 
+import tcadb.pacote.dao.ProdutosDAO;
+import tcadb.pacote.models.FormaDePagamento;
 import tcadb.pacote.models.Produtos;
 
 import java.util.ArrayList;
@@ -36,7 +38,8 @@ public class CarrinhoDeCompras {
         } else {
             System.out.println("Produtos no Carrinho de Compras:");
             for (ItemDeCompra item : itens) {
-                System.out.println("Produto: " + item.getProduto().getNome() +
+                System.out.println("Codigo Produto: " + item.getProduto().getCodigoP() +
+                        ", Produto: " + item.getProduto().getNome() +
                         ", Quantidade: " + item.getQuantidade() +
                         ", Preço Unitário: R$" + item.getProduto().getPreco() +
                         ", Subtotal: R$" + item.getSubtotal());
@@ -44,16 +47,24 @@ public class CarrinhoDeCompras {
         }
     }
 
+    public void listarProdutos() {
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        List<Produtos> produtos = produtosDAO.listar();
+        for (Produtos produto : produtos) {
+            System.out.println(produto.getCodigoP() + " - " + produto.getNome() + " - R$" + produto.getPreco());
+        }
+    }
+
     public List<ItemDeCompra> getItens() {
         return itens;
     }
 
-
     public double calcularTotal() {
         double total = 0.0;
         for (ItemDeCompra item : itens) {
-            total += item.getSubtotal() * 0.2; // 0.2 é a taxa de entrega
+            total += item.getSubtotal() + 15 ; // 15 é a taxa de entrega
         }
+        System.out.println("Valor total da compra: " + total);
         return total;
     }
 }

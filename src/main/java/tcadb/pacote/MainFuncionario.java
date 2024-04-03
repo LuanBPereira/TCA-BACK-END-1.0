@@ -38,15 +38,17 @@ public class MainFuncionario {
 
     private static int exibirMenu() {
         System.out.println("""
-                ——————————————————————————————————————
-                |        𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕      |
-                |         𝔼𝕤𝕔𝕠𝕝𝕙𝕒 𝕦𝕞𝕒 𝕠𝕡𝕔̧𝕒̃𝕠:         |
-                | 1 - Listar produtos cadastrados    |
-                | 2 - Cadastrar novo produto         |
-                | 3 - Remover um produto             |
-                | 4 - Modificar dados de produto     |
-                | 5 - sair                           |
-                ——————————————————————————————————————
+               ===================================================
+               ||           𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕               ||
+               ||            𝔼𝕤𝕔𝕠𝕝𝕙𝕒 𝕦𝕞𝕒 𝕠𝕡𝕔̧𝕒̃𝕠:                 ||
+               ||                                               ||
+               || 1 - Listar produtos cadastrados               ||
+               || 2 - Cadastrar novo produto                    ||
+               || 3 - Remover um produto                        ||
+               || 4 - Modificar dados de produto                ||
+               || 5 - Finalizar programa                        ||
+               ||                                               ||
+               ===================================================
                 """);
         return leitor.nextInt();
     }

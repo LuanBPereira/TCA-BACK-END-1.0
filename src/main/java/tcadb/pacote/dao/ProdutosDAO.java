@@ -81,7 +81,7 @@ public class ProdutosDAO {
         return produtos;
     }
 
-    public Produtos listarPorId(int codigo) {
+    public Produtos listarPorCodigo(int codigo) {
         String sql = "SELECT * FROM tb_produtos WHERE codigoP = ?";
 
         Connection conn;
@@ -197,6 +197,5 @@ public class ProdutosDAO {
         }
     }
 
-    // https://chat.openai.com/share/65a6a4d2-f4f1-42e4-9cde-7f1c5c224de4
 }
 
