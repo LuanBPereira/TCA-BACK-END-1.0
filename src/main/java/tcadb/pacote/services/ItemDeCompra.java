@@ -2,7 +2,7 @@ package tcadb.pacote.services;
 
 import tcadb.pacote.models.Produtos;
 
-public class ItemDeCompra {
+public class ItemDeCompra extends Produtos {
 
     private Produtos produto;
     private int quantidade;
@@ -27,6 +27,7 @@ public class ItemDeCompra {
     public double getSubtotal() {
         return produto.getPreco() * quantidade;
     }
+
 }
 
 

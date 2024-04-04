@@ -92,4 +92,5 @@ public class MainFuncionario {
         System.out.println("\nClique qualquer tecla para retornar ao menu");
         leitor.next();
     }
+
 }

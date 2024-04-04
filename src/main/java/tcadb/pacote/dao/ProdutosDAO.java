@@ -38,10 +38,7 @@ public class ProdutosDAO {
             ps.execute();
             ps.close();
             conn.close();
-            // verificação para ver se a conexão foi fechada
-            /* if (conn.isClosed()) {
-                System.out.println("A conexão foi encerrada corretamente.");
-            } */
+
         } catch (SQLException e){
             throw new RuntimeException(e);
         }

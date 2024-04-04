@@ -1,10 +1,13 @@
 package tcadb.pacote.models;
 
+import tcadb.pacote.services.ItemDeCompra;
+
 public class Produtos {
 
     private Integer codigoP;
     private String nome;
     private double preco;
+
 
     public Integer getCodigoP() {
         return codigoP;
@@ -30,4 +33,12 @@ public class Produtos {
         this.preco = preco;
     }
 
+    @Override
+    public String toString() {
+        return "Produtos{" +
+                "codigoP=" + codigoP +
+                ", nome='" + nome + '\'' +
+                ", preco=" + preco +
+                '}';
+    }
 }

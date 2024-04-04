@@ -4,6 +4,7 @@ import tcadb.pacote.dao.ProdutosDAO;
 import tcadb.pacote.models.FormaDePagamento;
 import tcadb.pacote.models.Produtos;
 import tcadb.pacote.services.CarrinhoDeCompras;
+import tcadb.pacote.services.ItemDeCompra;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -12,11 +13,13 @@ public class MainCliente {
     private static Scanner leitor = new Scanner(System.in).useDelimiter("\n");
     private static CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
     private static ProdutosDAO produtosDAO = new ProdutosDAO();
+    private static Produtos produtos = new Produtos();
+
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
 
-        while (opcao != 4){
+        while (opcao != 5){
             switch (opcao) {
                 case 1:
                     adicionarItemCarrinho();
@@ -27,12 +30,15 @@ public class MainCliente {
                 case 3:
                     removerProdutoCarrinho();
                     break;
+                case 4:
+                    menuPagamento();
+                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
             opcao = exibirMenu();
         }
-        menuPagamento();
+
     }
 
     private static int exibirMenu(){
@@ -45,6 +51,7 @@ public class MainCliente {
                || 2 - Listar produtos no carrinho               ||
                || 3 - Remover produto do carrinho               ||
                || 4 - Finalizar compra                          ||
+               || 5 - Sair do programa                          ||
                ||                                               ||
                ===================================================
                 """);
@@ -72,7 +79,6 @@ public class MainCliente {
                 System.out.println("Digite a quantidade de " + produto.getNome() + " que deseja:");
                 int quantidade = leitor.nextInt();
                 leitor.nextLine();
-
                 carrinho.adicionarItem(produto, quantidade);
                 System.out.println("Produto adicionado ao carrinho com sucesso!");
 
@@ -82,43 +88,55 @@ public class MainCliente {
     }
 
     private static void removerProdutoCarrinho() {
-        listarProdutosCarrinho();
-        System.out.println("Digite o código do produto que deseja remover do carrinho:");
-        int codigoProduto = leitor.nextInt();
-        carrinho.removerItem(codigoProduto);
-        System.out.println("Produto removido do carrinho com sucesso!");
-    }
-
-    private static void menuPagamento(){
-        System.out.println("Produtos comprados: ");
-        listarProdutosCarrinho();
-        carrinho.calcularTotal();
-        System.out.println("""
-                \nQual a forma de pagamento você deseja?
-                - Credito
-                - Debito
-                - Pix
-                - Boleto""");
-        // Limpa o buffer de entrada antes de ler a escolha de pagamento
-        leitor.nextLine();
-        String opcaoPagamento = leitor.nextLine().toUpperCase();
-
-        switch (opcaoPagamento){
-            case "CREDITO":
-                FormaDePagamento.realizarPagamento(FormaDePagamento.CREDITO);
-                break;
-            case "DEBITO":
-                FormaDePagamento.realizarPagamento(FormaDePagamento.DEBITO);
-                break;
-            case "PIX":
-                FormaDePagamento.realizarPagamento(FormaDePagamento.PIX);
-                break;
-            case "BOLETO":
-                FormaDePagamento.realizarPagamento(FormaDePagamento.BOLETO);
-                break;
-            default:
-                System.out.println("Opção inválida.");
+        if (carrinho.getItens().isEmpty()) {
+            System.out.println("Carrinho vazio");
+        } else {
+            listarProdutosCarrinho();
+            System.out.println("Digite o código do produto que deseja remover do carrinho:");
+            int codigoProduto = leitor.nextInt();
+            System.out.println("Digite a quantidade que deseja remover:");
+            int quantidade = leitor.nextInt();
+            carrinho.removerItem(codigoProduto, quantidade);
+            System.out.println("Removido: " + quantidade + " de" + produtos.getProduto().getNome() + "!");
         }
     }
 
+    private static void menuPagamento() {
+        if (carrinho.getItens().isEmpty()) {
+            System.out.println("Carrinho vazio.");
+        } else {
+
+            System.out.println("Produtos comprados: ");
+            listarProdutosCarrinho();
+            carrinho.calcularTotal();
+            System.out.println("""
+                    \nQual a forma de pagamento você deseja?
+                    - Credito
+                    - Debito
+                    - Pix
+                    - Boleto""");
+            // Limpa o buffer de entrada antes de ler a escolha de pagamento
+            leitor.nextLine();
+            String opcaoPagamento = leitor.nextLine().toUpperCase();
+
+            switch (opcaoPagamento) {
+                case "CREDITO":
+                    FormaDePagamento.realizarPagamento(FormaDePagamento.CREDITO);
+                    break;
+                case "DEBITO":
+                    FormaDePagamento.realizarPagamento(FormaDePagamento.DEBITO);
+                    break;
+                case "PIX":
+                    FormaDePagamento.realizarPagamento(FormaDePagamento.PIX);
+                    break;
+                case "BOLETO":
+                    FormaDePagamento.realizarPagamento(FormaDePagamento.BOLETO);
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+
+
+        }
+    }
 }
