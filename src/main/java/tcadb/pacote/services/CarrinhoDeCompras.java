@@ -33,9 +33,11 @@ public class CarrinhoDeCompras {
                 if (quantidadeAtual <= quantidade) {
                     // Se a quantidade a ser removida for maior ou igual à quantidade no carrinho, remova o item completamente
                     itens.remove(item);
+                    System.out.println("Produto: " + item.getProduto().getNome() + " removido com sucesso!");
                 } else {
                     // Caso contrário, atualize a quantidade do item no carrinho
                     item.setQuantidade(quantidadeAtual - quantidade);
+                    System.out.println("Quantidade removida: " + quantidade + " do produto: " + item.getProduto().getNome());
                 }
                 return;
             }
@@ -66,7 +68,7 @@ public class CarrinhoDeCompras {
         ProdutosDAO produtosDAO = new ProdutosDAO();
         List<Produtos> produtos = produtosDAO.listar();
         for (Produtos produto : produtos) {
-            System.out.println(produto.getCodigoP() + " - " + produto.getNome() + " - R$" + produto.getPreco());
+            System.out.println("Código: " + produto.getCodigoP() + " - " + produto.getNome() + " - R$" + produto.getPreco());
         }
     }
 

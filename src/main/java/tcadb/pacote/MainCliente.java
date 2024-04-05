@@ -4,17 +4,13 @@ import tcadb.pacote.dao.ProdutosDAO;
 import tcadb.pacote.models.FormaDePagamento;
 import tcadb.pacote.models.Produtos;
 import tcadb.pacote.services.CarrinhoDeCompras;
-import tcadb.pacote.services.ItemDeCompra;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class MainCliente {
     private static Scanner leitor = new Scanner(System.in).useDelimiter("\n");
     private static CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
     private static ProdutosDAO produtosDAO = new ProdutosDAO();
-    private static Produtos produtos = new Produtos();
-
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
@@ -58,11 +54,6 @@ public class MainCliente {
         return leitor.nextInt();
     }
 
-    private static void listarProdutosCarrinho(){
-        carrinho.listarProdutosAdicionados();
-
-    }
-
     private static void adicionarItemCarrinho() {
         String resposta = "";
         carrinho.listarProdutos();
@@ -76,38 +67,53 @@ public class MainCliente {
                 System.out.println("Produto não encontrado.");
                 continue;
             }
-                System.out.println("Digite a quantidade de " + produto.getNome() + " que deseja:");
-                int quantidade = leitor.nextInt();
-                leitor.nextLine();
-                carrinho.adicionarItem(produto, quantidade);
-                System.out.println("Produto adicionado ao carrinho com sucesso!");
+            System.out.println("Digite a quantidade de " + produto.getNome() + " que deseja:");
+            int quantidade = leitor.nextInt();
 
-            System.out.println("\nDeseja adicionar outro produto? (S/N): ");
+            if(quantidade == 0){
+                System.out.println("Erro. Quantidade de produto precisa ser maior que 0.\n");
+                adicionarItemCarrinho();
+                return;
+            }
+            leitor.nextLine();
+            carrinho.adicionarItem(produto, quantidade);
+            System.out.println("Produto adicionado ao carrinho com sucesso!");
+
+            System.out.println("\nDeseja adicionar outro produto? CLique 'S' para continuar a comprar" +
+                    " ou clique 'ENTER' para retornar ao menu.");
             resposta = leitor.nextLine();
         } while (resposta.equalsIgnoreCase("S"));
+    }
+
+    private static void listarProdutosCarrinho(){
+        carrinho.listarProdutosAdicionados();
+
+        System.out.println("\nClique qualquer tecla para retornar ao menu");
+        leitor.next();
     }
 
     private static void removerProdutoCarrinho() {
         if (carrinho.getItens().isEmpty()) {
             System.out.println("Carrinho vazio");
         } else {
-            listarProdutosCarrinho();
-            System.out.println("Digite o código do produto que deseja remover do carrinho:");
+            carrinho.listarProdutosAdicionados();
+            System.out.println("\nDigite o código do produto que deseja remover do carrinho:");
             int codigoProduto = leitor.nextInt();
             System.out.println("Digite a quantidade que deseja remover:");
             int quantidade = leitor.nextInt();
             carrinho.removerItem(codigoProduto, quantidade);
-            System.out.println("Removido: " + quantidade + " de" + produtos.getProduto().getNome() + "!");
+
+            System.out.println("\nClique qualquer tecla para retornar ao menu");
+            leitor.next();
         }
+
     }
 
     private static void menuPagamento() {
         if (carrinho.getItens().isEmpty()) {
             System.out.println("Carrinho vazio.");
         } else {
-
-            System.out.println("Produtos comprados: ");
-            listarProdutosCarrinho();
+            carrinho.listarProdutosAdicionados();
             carrinho.calcularTotal();
             System.out.println("""
                     \nQual a forma de pagamento você deseja?
@@ -135,8 +141,6 @@ public class MainCliente {
                 default:
                     System.out.println("Opção inválida.");
             }
-
-
         }
     }
 }

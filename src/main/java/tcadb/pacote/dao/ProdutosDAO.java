@@ -111,7 +111,7 @@ public class ProdutosDAO {
     public void remover() {
         Scanner leitura = new Scanner(System.in);
 
-        System.out.println("Qual produto gostaria de remover da tabela?" +
+        System.out.println("Qual produto gostaria de remover da tabela?\n" +
                 "\nDigite o código do produto para remove-lo.");
         int escolhaRemocao = leitura.nextInt();
 
@@ -139,7 +139,7 @@ public class ProdutosDAO {
     public void modificar() {
         Scanner leitura = new Scanner(System.in);
 
-        System.out.println("O que você quer mudar na tabela? Nome/Preco");
+        System.out.println("\nO que você quer mudar na tabela? Nome/Preco");
         String nomeOuPreco = leitura.nextLine();
 
         System.out.println("Digite o código do produto:");

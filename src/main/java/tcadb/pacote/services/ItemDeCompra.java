@@ -2,7 +2,7 @@ package tcadb.pacote.services;
 
 import tcadb.pacote.models.Produtos;
 
-public class ItemDeCompra extends Produtos {
+public class ItemDeCompra {
 
     private Produtos produto;
     private int quantidade;

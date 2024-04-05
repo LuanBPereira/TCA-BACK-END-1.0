@@ -1,6 +1,5 @@
 package tcadb.pacote.models;
 
-import tcadb.pacote.services.ItemDeCompra;
 
 public class Produtos {
 

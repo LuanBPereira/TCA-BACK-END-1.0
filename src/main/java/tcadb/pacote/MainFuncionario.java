@@ -58,7 +58,7 @@ public class MainFuncionario {
 
         System.out.println("Produtos cadastrados: ");
         for(Produtos p : produtosDAO.listar()){
-            System.out.println( "(" + p.getCodigoP() + ", " + p.getNome() + ","
+            System.out.println( "(CódigoP: " + p.getCodigoP() + ", " + p.getNome() + ","
                     + " R$" + p.getPreco() + ")" );
         }
 
@@ -77,7 +77,7 @@ public class MainFuncionario {
 
     private static void removerProdutos() throws SQLException {
         ProdutosDAO produtosDAO = new ProdutosDAO();
-        produtosDAO.listar().forEach(listar -> System.out.println("(" +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
+        produtosDAO.listar().forEach(listar -> System.out.println("(CodigoP: " +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.remover();
 
         System.out.println("\nClique qualquer tecla para retornar ao menu");
@@ -86,7 +86,7 @@ public class MainFuncionario {
 
     private static void modificarDadosProdutos(){
         ProdutosDAO produtosDAO = new ProdutosDAO();
-        produtosDAO.listar().forEach(listar -> System.out.println("(" +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
+        produtosDAO.listar().forEach(listar -> System.out.println("(CodigoP: " +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.modificar();
 
         System.out.println("\nClique qualquer tecla para retornar ao menu");
