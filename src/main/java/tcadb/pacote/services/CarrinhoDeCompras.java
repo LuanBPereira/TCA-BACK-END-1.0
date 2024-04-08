@@ -3,14 +3,20 @@ package tcadb.pacote.services;
 import tcadb.pacote.dao.ProdutosDAO;
 import tcadb.pacote.models.Produtos;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarrinhoDeCompras {
+    private DecimalFormat df = new DecimalFormat("0.00");
     private List<ItemDeCompra> itens;
 
     public CarrinhoDeCompras() {
         this.itens = new ArrayList<>();
+    }
+
+    public List<ItemDeCompra> getItens() {
+        return itens;
     }
 
     public void adicionarItem(Produtos produto, int quantidade) {
@@ -28,10 +34,14 @@ public class CarrinhoDeCompras {
     public void removerItem(int codigoProduto, int quantidade) {
         // Encontra o item do carrinho pelo código do produto
         for (ItemDeCompra item : itens) {
-            if (item.getProduto().getCodigoP().equals(codigoProduto)) {
+            if (item.getProduto().getCodigoP() == codigoProduto) {
                 int quantidadeAtual = item.getQuantidade();
-                if (quantidadeAtual <= quantidade) {
-                    // Se a quantidade a ser removida for maior ou igual à quantidade no carrinho, remova o item completamente
+                if (quantidade > quantidadeAtual) {
+                    // Se a quantidade a ser removida for maior do que a quantidade no carrinho, exibe uma mensagem e retorna
+                    System.out.println("Não é possível remover mais itens do que você tem.");
+                    return;
+                } else if (quantidadeAtual == quantidade) {
+                    // Se a quantidade a ser removida for igual à quantidade no carrinho, remova o item completamente
                     itens.remove(item);
                     System.out.println("Produto: " + item.getProduto().getNome() + " removido com sucesso!");
                 } else {
@@ -42,10 +52,8 @@ public class CarrinhoDeCompras {
                 return;
             }
         }
-    }
-
-    public List<ItemDeCompra> getItens() {
-        return itens;
+        // Se o item não for encontrado, exibe uma mensagem
+        System.out.println("Produto não encontrado no carrinho.");
     }
 
     public void listarProdutosAdicionados() {
@@ -58,9 +66,10 @@ public class CarrinhoDeCompras {
                 System.out.println("Codigo Produto: " + item.getProduto().getCodigoP() +
                         ", Produto: " + item.getProduto().getNome() +
                         ", Quantidade: " + item.getQuantidade() +
-                        ", Preço Unitário: R$" + item.getProduto().getPreco() +
-                        ", Subtotal: R$" + item.getSubtotal());
+                        ", Preço Unitário: R$" + df.format(item.getProduto().getPreco()) +
+                        ", Subtotal: R$" + df.format(item.getSubtotal()));
             }
+            System.out.println("\nValor total dos produtos: " + "R$" + df.format(calcularTotal()));
         }
     }
 
@@ -68,18 +77,20 @@ public class CarrinhoDeCompras {
         ProdutosDAO produtosDAO = new ProdutosDAO();
         List<Produtos> produtos = produtosDAO.listar();
         for (Produtos produto : produtos) {
-            System.out.println("Código: " + produto.getCodigoP() + " - " + produto.getNome() + " - R$" + produto.getPreco());
+            System.out.println("Código: " + produto.getCodigoP() + " - " + produto.getNome() + " - R$" + df.format(produto.getPreco()));
         }
     }
 
     public double calcularTotal() {
         double total = 0.0;
         for (ItemDeCompra item : itens) {
-            total += item.getSubtotal() + 7 ; // 7 é a taxa de entrega
+            total += item.getSubtotal();
         }
-        System.out.println("Taxa de entrega: R$7.00\n" +
-                "Valor total da compra: " + total);
         return total;
+    }
+
+    public void limparCarrinho(){
+        itens.clear();
     }
 
 }

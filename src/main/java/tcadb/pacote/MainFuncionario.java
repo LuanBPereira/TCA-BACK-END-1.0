@@ -62,7 +62,7 @@ public class MainFuncionario {
                     + " R$" + p.getPreco() + ")" );
         }
 
-        System.out.println("\nClique qualquer tecla para retornar ao menu");
+        System.out.println("\nClique 'ENTER' para retornar ao menu");
         leitor.next();
     }
 
@@ -80,7 +80,7 @@ public class MainFuncionario {
         produtosDAO.listar().forEach(listar -> System.out.println("(CodigoP: " +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.remover();
 
-        System.out.println("\nClique qualquer tecla para retornar ao menu");
+        System.out.println("\nClique 'ENTER' para retornar ao menu");
         leitor.next();
     }
 
@@ -89,7 +89,7 @@ public class MainFuncionario {
         produtosDAO.listar().forEach(listar -> System.out.println("(CodigoP: " +listar.getCodigoP() + "," + listar.getNome() + "," + " R$" + listar.getPreco() + ")"));
         produtosDAO.modificar();
 
-        System.out.println("\nClique qualquer tecla para retornar ao menu");
+        System.out.println("\nClique 'ENTER' para retornar ao menu");
         leitor.next();
     }
 

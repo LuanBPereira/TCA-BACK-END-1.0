@@ -5,6 +5,8 @@ import tcadb.pacote.models.FormaDePagamento;
 import tcadb.pacote.models.Produtos;
 import tcadb.pacote.services.CarrinhoDeCompras;
 
+import java.text.DecimalFormat;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainCliente {
@@ -14,7 +16,8 @@ public class MainCliente {
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
-
+        // quero deixar uma dendo aqui: Confirmar se realmente é preciso limpar o carrinho
+        // após a compra. Não sei se faz tanto sentido isso.
         while (opcao != 5){
             switch (opcao) {
                 case 1:
@@ -34,7 +37,6 @@ public class MainCliente {
             }
             opcao = exibirMenu();
         }
-
     }
 
     private static int exibirMenu(){
@@ -88,7 +90,7 @@ public class MainCliente {
     private static void listarProdutosCarrinho(){
         carrinho.listarProdutosAdicionados();
 
-        System.out.println("\nClique qualquer tecla para retornar ao menu");
+        System.out.println("\nClique 'ENTER' para retornar ao menu");
         leitor.next();
     }
 
@@ -103,44 +105,54 @@ public class MainCliente {
             int quantidade = leitor.nextInt();
             carrinho.removerItem(codigoProduto, quantidade);
 
-            System.out.println("\nClique qualquer tecla para retornar ao menu");
+            System.out.println("\nClique 'ENTER' para retornar ao menu");
             leitor.next();
         }
-
     }
 
     private static void menuPagamento() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        final double TAXA_DE_ENTREGA = 7.00;
+        final var VALOR_TOTAL_COMPRA = carrinho.calcularTotal() + TAXA_DE_ENTREGA;
+
         if (carrinho.getItens().isEmpty()) {
             System.out.println("Carrinho vazio.");
         } else {
             carrinho.listarProdutosAdicionados();
-            carrinho.calcularTotal();
-            System.out.println("""
-                    \nQual a forma de pagamento você deseja?
-                    - Credito
-                    - Debito
-                    - Pix
-                    - Boleto""");
-            // Limpa o buffer de entrada antes de ler a escolha de pagamento
-            leitor.nextLine();
-            String opcaoPagamento = leitor.nextLine().toUpperCase();
+            System.out.println("\nTaxa de entrega: R$" + df.format(TAXA_DE_ENTREGA) +
+                    "\nValor total da compra: R$" + df.format(VALOR_TOTAL_COMPRA));
 
-            switch (opcaoPagamento) {
-                case "CREDITO":
-                    FormaDePagamento.realizarPagamento(FormaDePagamento.CREDITO);
-                    break;
-                case "DEBITO":
-                    FormaDePagamento.realizarPagamento(FormaDePagamento.DEBITO);
-                    break;
-                case "PIX":
-                    FormaDePagamento.realizarPagamento(FormaDePagamento.PIX);
-                    break;
-                case "BOLETO":
-                    FormaDePagamento.realizarPagamento(FormaDePagamento.BOLETO);
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
+            System.out.println("""
+                    \nQual a forma de pagamento você deseja? Escolha de 1 a 4.
+                    1 - Credito
+                    2 - Debito
+                    3 - Pix
+                    4 - Boleto""");
+            int opcaoPagamento = leitor.nextInt();
+            try {
+                switch (opcaoPagamento) {
+                    case 1:
+                        FormaDePagamento.realizarPagamento(FormaDePagamento.CREDITO);
+                        break;
+                    case 2:
+                        FormaDePagamento.realizarPagamento(FormaDePagamento.DEBITO);
+                        break;
+                    case 3:
+                        FormaDePagamento.realizarPagamento(FormaDePagamento.PIX);
+                        break;
+                    case 4:
+                        FormaDePagamento.realizarPagamento(FormaDePagamento.BOLETO);
+                        break;
+                    default:
+                        System.out.println("Opção inválida.\n");
+                        menuPagamento();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um número válido para a opção de pagamento.\n");
+                leitor.next(); // Limpa o buffer de entrada
+                menuPagamento(); // Chama o método novamente para permitir que o usuário escolha novamente
             }
         }
+        carrinho.limparCarrinho();
     }
 }
