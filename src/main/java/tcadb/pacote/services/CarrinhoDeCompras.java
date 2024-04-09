@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarrinhoDeCompras {
+public class CarrinhoDeCompras implements ICarrinhoDeCompras {
     private DecimalFormat df = new DecimalFormat("0.00");
     private List<ItemDeCompra> itens;
 
@@ -32,20 +32,16 @@ public class CarrinhoDeCompras {
     }
 
     public void removerItem(int codigoProduto, int quantidade) {
-        // Encontra o item do carrinho pelo código do produto
         for (ItemDeCompra item : itens) {
             if (item.getProduto().getCodigoP() == codigoProduto) {
                 int quantidadeAtual = item.getQuantidade();
                 if (quantidade > quantidadeAtual) {
-                    // Se a quantidade a ser removida for maior do que a quantidade no carrinho, exibe uma mensagem e retorna
                     System.out.println("Não é possível remover mais itens do que você tem.");
                     return;
                 } else if (quantidadeAtual == quantidade) {
-                    // Se a quantidade a ser removida for igual à quantidade no carrinho, remova o item completamente
                     itens.remove(item);
                     System.out.println("Produto: " + item.getProduto().getNome() + " removido com sucesso!");
                 } else {
-                    // Caso contrário, atualize a quantidade do item no carrinho
                     item.setQuantidade(quantidadeAtual - quantidade);
                     System.out.println("Quantidade removida: " + quantidade + " do produto: " + item.getProduto().getNome());
                 }

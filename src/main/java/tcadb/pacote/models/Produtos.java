@@ -1,6 +1,5 @@
 package tcadb.pacote.models;
 
-
 public class Produtos {
 
     private Integer codigoP;
@@ -32,12 +31,4 @@ public class Produtos {
         this.preco = preco;
     }
 
-    @Override
-    public String toString() {
-        return "Produtos{" +
-                "codigoP=" + codigoP +
-                ", nome='" + nome + '\'' +
-                ", preco=" + preco +
-                '}';
-    }
 }

@@ -16,31 +16,32 @@ public class MainCliente {
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
-        // quero deixar uma dendo aqui: Confirmar se realmente é preciso limpar o carrinho
-        // após a compra. Não sei se faz tanto sentido isso.
         while (opcao != 5){
-            switch (opcao) {
-                case 1:
-                    adicionarItemCarrinho();
-                    break;
-                case 2:
-                    listarProdutosCarrinho();
-                    break;
-                case 3:
-                    removerProdutoCarrinho();
-                    break;
-                case 4:
-                    menuPagamento();
-                    break;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
-            }
+                switch (opcao) {
+                    case 1:
+                        adicionarItemCarrinho();
+                        break;
+                    case 2:
+                        listarProdutosCarrinho();
+                        break;
+                    case 3:
+                        removerProdutoCarrinho();
+                        break;
+                    case 4:
+                        menuPagamento();
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
+                }
             opcao = exibirMenu();
         }
+        System.out.println("Encerrando programa...");
     }
 
     private static int exibirMenu(){
-        System.out.println("""
+        int opcao;
+        try {
+            System.out.println("""
                ===================================================
                ||            𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕              ||
                ||             𝔼𝕤𝕔𝕠𝕝𝕙𝕒 𝕦𝕞𝕒 𝕠𝕡𝕔̧𝕒̃𝕠:                ||
@@ -53,37 +54,51 @@ public class MainCliente {
                ||                                               ||
                ===================================================
                 """);
-        return leitor.nextInt();
+            opcao = leitor.nextInt();
+            leitor.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("Erro. Por favor, digite um número correspondente à opção desejada.\n");
+            leitor.nextLine();
+            opcao = exibirMenu();
+        }
+        return opcao;
     }
 
     private static void adicionarItemCarrinho() {
         String resposta = "";
         carrinho.listarProdutos();
         do {
-            System.out.println("\nDigite o código do produto que deseja adicionar ao carrinho:");
-            int codigoProduto = leitor.nextInt();
-            leitor.nextLine();
+            try {
 
-            Produtos produto = produtosDAO.listarPorCodigo(codigoProduto);
-            if (produto == null) {
-                System.out.println("Produto não encontrado.");
-                continue;
+                System.out.println("\nDigite o código do produto que deseja adicionar ao carrinho:");
+                int codigoProduto = leitor.nextInt();
+                leitor.nextLine();
+
+                Produtos produto = produtosDAO.listarPorCodigo(codigoProduto);
+                if (produto == null) {
+                    System.out.println("Produto não encontrado.");
+                    continue;
+                }
+                System.out.println("Digite a quantidade de " + produto.getNome() + " que deseja:");
+                int quantidade = leitor.nextInt();
+
+                if (quantidade == 0) {
+                    System.out.println("Erro. Quantidade de produto precisa ser maior que 0.\n");
+                    adicionarItemCarrinho();
+                    return;
+                }
+                leitor.nextLine();
+                carrinho.adicionarItem(produto, quantidade);
+                System.out.println("Produto adicionado ao carrinho com sucesso!");
+
+                System.out.println("\nDeseja adicionar outro produto? CLique 'S' para continuar a comprar" +
+                        " ou clique 'ENTER' para retornar ao menu.");
+                resposta = leitor.nextLine();
+
+            } catch (InputMismatchException e) {
+                System.out.println("Erro. Por favor, insira um número válido para quantidade ou código do produto.");
+                leitor.next();
             }
-            System.out.println("Digite a quantidade de " + produto.getNome() + " que deseja:");
-            int quantidade = leitor.nextInt();
-
-            if(quantidade == 0){
-                System.out.println("Erro. Quantidade de produto precisa ser maior que 0.\n");
-                adicionarItemCarrinho();
-                return;
-            }
-            leitor.nextLine();
-            carrinho.adicionarItem(produto, quantidade);
-            System.out.println("Produto adicionado ao carrinho com sucesso!");
-
-            System.out.println("\nDeseja adicionar outro produto? CLique 'S' para continuar a comprar" +
-                    " ou clique 'ENTER' para retornar ao menu.");
-            resposta = leitor.nextLine();
         } while (resposta.equalsIgnoreCase("S"));
     }
 
@@ -91,22 +106,28 @@ public class MainCliente {
         carrinho.listarProdutosAdicionados();
 
         System.out.println("\nClique 'ENTER' para retornar ao menu");
-        leitor.next();
+        leitor.nextLine();
     }
 
     private static void removerProdutoCarrinho() {
         if (carrinho.getItens().isEmpty()) {
-            System.out.println("Carrinho vazio");
+            System.out.println("Carrinho de compras vazio.");
+            System.out.println("\nClique 'ENTER' para retornar ao menu");
+            leitor.nextLine();
         } else {
             carrinho.listarProdutosAdicionados();
-            System.out.println("\nDigite o código do produto que deseja remover do carrinho:");
-            int codigoProduto = leitor.nextInt();
-            System.out.println("Digite a quantidade que deseja remover:");
-            int quantidade = leitor.nextInt();
-            carrinho.removerItem(codigoProduto, quantidade);
+            try {
+                System.out.println("\nDigite o código do produto que deseja remover do carrinho:");
+                int codigoProduto = leitor.nextInt();
+                System.out.println("Digite a quantidade que deseja remover:");
+                int quantidade = leitor.nextInt();
+                carrinho.removerItem(codigoProduto, quantidade);
 
-            System.out.println("\nClique 'ENTER' para retornar ao menu");
-            leitor.next();
+                System.out.println("\nClique 'ENTER' para retornar ao menu");
+                leitor.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Erro. Por favor, insira um número válido para quantidade ou código do produto.");
+            }
         }
     }
 
@@ -116,7 +137,9 @@ public class MainCliente {
         final var VALOR_TOTAL_COMPRA = carrinho.calcularTotal() + TAXA_DE_ENTREGA;
 
         if (carrinho.getItens().isEmpty()) {
-            System.out.println("Carrinho vazio.");
+            System.out.println("Carrinho de compras vazio.");
+            System.out.println("\nClique 'ENTER' para retornar ao menu");
+            leitor.nextLine();
         } else {
             carrinho.listarProdutosAdicionados();
             System.out.println("\nTaxa de entrega: R$" + df.format(TAXA_DE_ENTREGA) +
@@ -148,7 +171,7 @@ public class MainCliente {
                         menuPagamento();
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Por favor, insira um número válido para a opção de pagamento.\n");
+                System.out.println("Erro. Por favor, digite uma das opções de pagamento.\n");
                 leitor.next(); // Limpa o buffer de entrada
                 menuPagamento(); // Chama o método novamente para permitir que o usuário escolha novamente
             }

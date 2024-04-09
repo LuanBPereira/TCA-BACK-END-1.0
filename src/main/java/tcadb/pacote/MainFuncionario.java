@@ -1,12 +1,11 @@
 package tcadb.pacote;
 
-
 import tcadb.pacote.dao.ProdutosDAO;
 import tcadb.pacote.models.Produtos;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
 
 public class MainFuncionario {
     private static Scanner leitor = new Scanner(System.in).useDelimiter("\n");
@@ -27,16 +26,21 @@ public class MainFuncionario {
                         break;
                     case 4:
                         modificarDadosProdutos();
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
                 }
                 opcao = exibirMenu();
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         System.out.println("Encerrando programa...");
     }
 
     private static int exibirMenu() {
+        int opcao;
+        try {
         System.out.println("""
                ===================================================
                ||           𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕               ||
@@ -50,7 +54,14 @@ public class MainFuncionario {
                ||                                               ||
                ===================================================
                 """);
-        return leitor.nextInt();
+            opcao = leitor.nextInt();
+            leitor.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("Erro. Por favor, digite um número correspondente à opção desejada.\n");
+            leitor.nextLine();
+            opcao = exibirMenu();
+        }
+        return opcao;
     }
 
     private static void listarProdutosCadastrados() throws SQLException {
@@ -63,7 +74,7 @@ public class MainFuncionario {
         }
 
         System.out.println("\nClique 'ENTER' para retornar ao menu");
-        leitor.next();
+        leitor.nextLine();
     }
 
     private static void cadastrarProdutos() throws SQLException {
@@ -72,7 +83,7 @@ public class MainFuncionario {
         System.out.println("Produto " + "[" +produtoCadastrado.getNome() +"]" + " cadastrado!");
 
         System.out.println("\nClique qualquer tecla para retornar ao menu");
-        leitor.next();
+        leitor.nextLine();
     }
 
     private static void removerProdutos() throws SQLException {
@@ -81,7 +92,7 @@ public class MainFuncionario {
         produtosDAO.remover();
 
         System.out.println("\nClique 'ENTER' para retornar ao menu");
-        leitor.next();
+        leitor.nextLine();
     }
 
     private static void modificarDadosProdutos(){
@@ -90,7 +101,7 @@ public class MainFuncionario {
         produtosDAO.modificar();
 
         System.out.println("\nClique 'ENTER' para retornar ao menu");
-        leitor.next();
+        leitor.nextLine();
     }
 
 }
