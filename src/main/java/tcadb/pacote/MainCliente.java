@@ -4,6 +4,7 @@ import tcadb.pacote.dao.ProdutosDAO;
 import tcadb.pacote.models.FormaDePagamento;
 import tcadb.pacote.models.Produtos;
 import tcadb.pacote.services.CarrinhoDeCompras;
+import tcadb.pacote.utils.ManipuladorArquivos;
 
 import java.text.DecimalFormat;
 import java.util.InputMismatchException;
@@ -13,6 +14,7 @@ public class MainCliente {
     private static Scanner leitor = new Scanner(System.in).useDelimiter("\n");
     private static CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
     private static ProdutosDAO produtosDAO = new ProdutosDAO();
+    private static ManipuladorArquivos manipuladorArquivos = new ManipuladorArquivos();
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
@@ -151,6 +153,7 @@ public class MainCliente {
                     2 - Debito
                     3 - Pix
                     4 - Boleto""");
+
             int opcaoPagamento = leitor.nextInt();
             try {
                 switch (opcaoPagamento) {
@@ -175,6 +178,7 @@ public class MainCliente {
                 leitor.next(); // Limpa o buffer de entrada
                 menuPagamento(); // Chama o método novamente para permitir que o usuário escolha novamente
             }
+          manipuladorArquivos.escreverNoArquivo(carrinho.calcularTotal(), TAXA_DE_ENTREGA, VALOR_TOTAL_COMPRA, opcaoPagamento, carrinho.getItens());
         }
         carrinho.limparCarrinho();
     }
