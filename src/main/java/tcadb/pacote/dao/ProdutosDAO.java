@@ -13,16 +13,7 @@ import java.util.Scanner;
 
 public class ProdutosDAO {
 
-    public Produtos cadastrar() {
-
-        Produtos produtos = new Produtos();
-        Scanner leitura = new Scanner(System.in);
-        System.out.println("Digite um produto para adicionar: ");
-        produtos.setNome(leitura.nextLine());
-        System.out.println("Digite um preço para o produto adicionado: ");
-        produtos.setPreco(leitura.nextDouble());
-
-
+    public Produtos cadastrar(Produtos produtos) {
         String sql = "INSERT INTO tb_produtos (Nome, Preco)" +
                 "VALUES (?, ?) ";
 

@@ -28,6 +28,5 @@ public enum FormaDePagamento {
                 break;
         }
     }
-
 }
 

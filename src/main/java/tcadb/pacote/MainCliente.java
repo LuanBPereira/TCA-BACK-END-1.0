@@ -136,7 +136,7 @@ public class MainCliente {
     private static void menuPagamento() {
         DecimalFormat df = new DecimalFormat("0.00");
         final double TAXA_DE_ENTREGA = 7.00;
-        final var VALOR_TOTAL_COMPRA = carrinho.calcularTotal() + TAXA_DE_ENTREGA;
+        final double VALOR_TOTAL_COMPRA = carrinho.calcularTotal() + TAXA_DE_ENTREGA;
 
         if (carrinho.getItens().isEmpty()) {
             System.out.println("Carrinho de compras vazio.");

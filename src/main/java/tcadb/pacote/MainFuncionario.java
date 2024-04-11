@@ -41,7 +41,7 @@ public class MainFuncionario {
     private static int exibirMenu() {
         int opcao;
         try {
-        System.out.println("""
+            System.out.println("""
                ===================================================
                ||           𝔹𝕖𝕞 𝕧𝕚𝕟𝕕𝕠 𝕒 𝕂𝕃 𝔻𝕠𝕔𝕖𝕤❕               ||
                ||            𝔼𝕤𝕔𝕠𝕝𝕙𝕒 𝕦𝕞𝕒 𝕠𝕡𝕔̧𝕒̃𝕠:                 ||
@@ -79,8 +79,16 @@ public class MainFuncionario {
 
     private static void cadastrarProdutos() throws SQLException {
         ProdutosDAO produtosDAO = new ProdutosDAO();
-        Produtos produtoCadastrado =  produtosDAO.cadastrar();
-        System.out.println("Produto " + "[" +produtoCadastrado.getNome() +"]" + " cadastrado!");
+        Produtos produtos = new Produtos();
+        Scanner leitura = new Scanner(System.in);
+
+        System.out.println("Digite um produto para adicionar: ");
+        produtos.setNome(leitura.nextLine());
+        System.out.println("Digite um preço para o produto adicionado: ");
+        produtos.setPreco(leitura.nextDouble());
+
+        Produtos produtoCadastrado =  produtosDAO.cadastrar(produtos);
+        System.out.println("Produto " + "[" + produtoCadastrado.getNome() +"]" + " cadastrado!");
 
         System.out.println("\nClique qualquer tecla para retornar ao menu");
         leitor.nextLine();

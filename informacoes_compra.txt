@@ -1,0 +1,51 @@
+----- Nova Compra -----
+Data e horário da compra: 10/04/2024 10:28:06
+
+Produtos comprados:
+Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 1, Preço Unitário: R$3,99, Subtotal: R$3,99
+
+Valor total dos produtos: R$3,99
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$10,99
+Forma de pagamento: Debito
+
+
+----- Nova Compra -----
+Data e horário da compra: 10/04/2024 10:39:14
+
+Produtos comprados:
+Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 1, Preço Unitário: R$3,99, Subtotal: R$3,99
+
+Valor total dos produtos: R$3,99
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$10,99
+Forma de pagamento: Debito
+
+
+----- Nova Compra -----
+Data e horário da compra: 10/04/2024 10:41:56
+
+Produtos comprados:
+Codigo Produto: 30, Produto: Ovo de pascoa, Quantidade: 1, Preço Unitário: R$50,00, Subtotal: R$50,00
+
+Valor total dos produtos: R$50,00
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$57,00
+Forma de pagamento: Boleto
+
+
+----- Nova Compra -----
+Data e horário da compra: 11/04/2024 11:01:02
+
+Produtos comprados:
+Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 1, Preço Unitário: R$3,99, Subtotal: R$3,99
+
+Valor total dos produtos: R$3,99
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$10,99
+Forma de pagamento: Credito
+
