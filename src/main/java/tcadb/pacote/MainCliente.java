@@ -1,5 +1,6 @@
 package tcadb.pacote;
 
+import tcadb.pacote.dao.ComprasDAO;
 import tcadb.pacote.dao.ProdutosDAO;
 import tcadb.pacote.models.FormaDePagamento;
 import tcadb.pacote.models.Produtos;
@@ -15,6 +16,7 @@ public class MainCliente {
     private static CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
     private static ProdutosDAO produtosDAO = new ProdutosDAO();
     private static ManipuladorArquivos manipuladorArquivos = new ManipuladorArquivos();
+    private static ComprasDAO dadosDeCompraDAO = new ComprasDAO();
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
@@ -155,6 +157,7 @@ public class MainCliente {
                     4 - Boleto""");
 
             int opcaoPagamento = leitor.nextInt();
+            // tenho que ver esse try-catch, pois não tá tendo nenhum efeito.
             try {
                 switch (opcaoPagamento) {
                     case 1:
@@ -171,14 +174,16 @@ public class MainCliente {
                         break;
                     default:
                         System.out.println("Opção inválida.\n");
-                        menuPagamento();
+                       menuPagamento();
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Erro. Por favor, digite uma das opções de pagamento.\n");
-                leitor.next(); // Limpa o buffer de entrada
+                leitor.nextLine();
                 menuPagamento(); // Chama o método novamente para permitir que o usuário escolha novamente
             }
+
           manipuladorArquivos.escreverNoArquivo(carrinho.calcularTotal(), TAXA_DE_ENTREGA, VALOR_TOTAL_COMPRA, opcaoPagamento, carrinho.getItens());
+          dadosDeCompraDAO.salvarCompra(carrinho.calcularTotal(), TAXA_DE_ENTREGA, VALOR_TOTAL_COMPRA, opcaoPagamento, carrinho.getItens());
         }
         carrinho.limparCarrinho();
     }

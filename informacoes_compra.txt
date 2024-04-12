@@ -49,3 +49,96 @@ Taxa de entrega: R$7,00
 Valor total da compra: R$10,99
 Forma de pagamento: Credito
 
+
+----- Nova Compra -----
+Data e horário da compra: 11/04/2024 11:30:26
+
+Produtos comprados:
+Codigo Produto: 19, Produto: Pipoca doce, Quantidade: 1, Preço Unitário: R$4,50, Subtotal: R$4,50
+
+Valor total dos produtos: R$4,50
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$11,50
+Forma de pagamento: Debito
+
+
+----- Nova Compra -----
+Data e horário da compra: 12/04/2024 09:05:09
+
+Produtos comprados:
+Codigo Produto: 28, Produto: Trufas, Quantidade: 5, Preço Unitário: R$3,00, Subtotal: R$15,00
+Codigo Produto: 27, Produto: Caixa de bombom, Quantidade: 1, Preço Unitário: R$8,99, Subtotal: R$8,99
+
+Valor total dos produtos: R$23,99
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$30,99
+Forma de pagamento: Debito
+
+
+----- Nova Compra -----
+Data e horário da compra: 12/04/2024 10:44:58
+
+Produtos comprados:
+Codigo Produto: 25, Produto: Paçoca, Quantidade: 10, Preço Unitário: R$0,50, Subtotal: R$5,00
+Codigo Produto: 28, Produto: Trufas, Quantidade: 2, Preço Unitário: R$3,00, Subtotal: R$6,00
+
+Valor total dos produtos: R$11,00
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$18,00
+Forma de pagamento: PIX
+
+
+----- Nova Compra -----
+Data e horário da compra: 12/04/2024 10:50:22
+
+Produtos comprados:
+Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 5, Preço Unitário: R$3,99, Subtotal: R$19,95
+
+Valor total dos produtos: R$19,95
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$26,95
+Forma de pagamento: Debito
+
+
+----- Nova Compra -----
+Data e horário da compra: 12/04/2024 10:51:41
+
+Produtos comprados:
+Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 5, Preço Unitário: R$3,99, Subtotal: R$19,95
+
+Valor total dos produtos: R$19,95
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$26,95
+Forma de pagamento: Debito
+
+
+----- Nova Compra -----
+Data e horário da compra: 12/04/2024 10:58:18
+
+Produtos comprados:
+Codigo Produto: 30, Produto: Ovo de pascoa, Quantidade: 1, Preço Unitário: R$50,00, Subtotal: R$50,00
+
+Valor total dos produtos: R$50,00
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$57,00
+Forma de pagamento: Boleto
+
+
+----- Nova Compra -----
+Data e horário da compra: 12/04/2024 11:12:33
+
+Produtos comprados:
+Codigo Produto: 23, Produto: Brigadeiros, Quantidade: 5, Preço Unitário: R$6,99, Subtotal: R$34,95
+
+Valor total dos produtos: R$34,95
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$41,95
+Forma de pagamento: Credito
+
