@@ -142,3 +142,16 @@ Taxa de entrega: R$7,00
 Valor total da compra: R$41,95
 Forma de pagamento: Credito
 
+
+----- Nova Compra -----
+Data e horário da compra: 13/04/2024 17:22:16
+
+Produtos comprados:
+Codigo Produto: 33, Produto: Barra de chocolate, Quantidade: 4, Preço Unitário: R$3.99, Subtotal: R$15.96
+
+Valor total dos produtos: R$15.96
+
+Taxa de entrega: R$7.00
+Valor total da compra: R$22.96
+Forma de pagamento: Debito
+
