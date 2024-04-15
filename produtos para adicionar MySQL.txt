@@ -1,19 +1,19 @@
 NOME			            PRECO
-"Pacote de Balas"	        4.99
-"Pacote de Chicletes"	    4.50
-"Pacote de Pirulitos"	    4.99
-"Pacote de marshmallow" 	5.00
-"Balas de goma"		        3.00
-"Pipoca doce"		        4.50
-"Alfajor"		            4.50
-"Maria Mole"	    	    3.99
-"Cookies"		            2.99
-"Brigadeiros"		        6.99
-"Beijinho"		            5.49
-"Paçoca"		            0.50
-"Maria mole"		        2.99
-"Caixa de bombom"	        8.99
-"Trufas"		            3.00
-"Pe de moleque"		        2.56
-"Ovo de pascoa"		        30.00
-"Barra de chocolate"	    3.99
+("Pacote de Balas",	        4.99),
+("Pacote de Chicletes",	    4.50),
+("Pacote de Pirulitos",	    4.99),
+("Pacote de marshmallow", 	5.00),
+("Balas de goma",		    3.00),
+("Pipoca doce",		        4.50),
+("Alfajor",		            4.50),
+("Maria Mole",	    	    3.99),
+("Cookies",		            2.99),
+("Brigadeiros",		        6.99),
+("Beijinho",		        5.49),
+("Paçoca",		            0.50),
+("Maria mole",		        2.99),
+("Caixa de bombom",	        8.99),
+("Trufas",		            3.00),
+("Pe de moleque",		    2.56),
+("Ovo de pascoa",		    30.00),
+("Barra de chocolate",	    3.99);

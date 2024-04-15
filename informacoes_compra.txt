@@ -155,3 +155,17 @@ Taxa de entrega: R$7.00
 Valor total da compra: R$22.96
 Forma de pagamento: Debito
 
+
+----- Nova Compra -----
+Data e horário da compra: 14/04/2024 20:35:59
+
+Produtos comprados:
+Codigo Produto: 31, Produto: Pe de moleque, Quantidade: 10, Preço Unitário: R$2.56, Subtotal: R$25.60
+Codigo Produto: 29, Produto: Caixa de bombom, Quantidade: 1, Preço Unitário: R$8.99, Subtotal: R$8.99
+
+Valor total dos produtos: R$34.59
+
+Taxa de entrega: R$7.00
+Valor total da compra: R$41.59
+Forma de pagamento: PIX
+
