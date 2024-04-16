@@ -1,211 +1,40 @@
 ----- Nova Compra -----
-Data e horário da compra: 10/04/2024 10:28:06
+Data e horário da compra: 16/04/2024 11:41:58
 
 Produtos comprados:
-Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 1, Preço Unitário: R$3,99, Subtotal: R$3,99
+Codigo Produto: 55, Produto: Ovo de páscoa ao leite 200g, Quantidade: 1, Preço Unitário: R$20,99, Subtotal: R$20,99
+Codigo Produto: 54, Produto: Doce de leite em pedaços 350g, Quantidade: 1, Preço Unitário: R$3,99, Subtotal: R$3,99
 
-Valor total dos produtos: R$3,99
+Valor total dos produtos: R$24,98
 
 Taxa de entrega: R$7,00
-Valor total da compra: R$10,99
+Valor total da compra: R$31,98
 Forma de pagamento: Debito
 
 
 ----- Nova Compra -----
-Data e horário da compra: 10/04/2024 10:39:14
+Data e horário da compra: 16/04/2024 11:45:12
 
 Produtos comprados:
-Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 1, Preço Unitário: R$3,99, Subtotal: R$3,99
+Codigo Produto: 52, Produto: Amendoim açucarado 350g, Quantidade: 2, Preço Unitário: R$10,00, Subtotal: R$20,00
 
-Valor total dos produtos: R$3,99
+Valor total dos produtos: R$20,00
 
 Taxa de entrega: R$7,00
-Valor total da compra: R$10,99
+Valor total da compra: R$27,00
 Forma de pagamento: Debito
 
 
 ----- Nova Compra -----
-Data e horário da compra: 10/04/2024 10:41:56
+Data e horário da compra: 16/04/2024 11:45:47
 
 Produtos comprados:
-Codigo Produto: 30, Produto: Ovo de pascoa, Quantidade: 1, Preço Unitário: R$50,00, Subtotal: R$50,00
+Codigo Produto: 36, Produto: Pacote de Balas 500g, Quantidade: 2, Preço Unitário: R$4,99, Subtotal: R$9,98
+Codigo Produto: 50, Produto: Pé de moleque 100g, Quantidade: 3, Preço Unitário: R$3,40, Subtotal: R$10,20
 
-Valor total dos produtos: R$50,00
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$57,00
-Forma de pagamento: Boleto
-
-
------ Nova Compra -----
-Data e horário da compra: 11/04/2024 11:01:02
-
-Produtos comprados:
-Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 1, Preço Unitário: R$3,99, Subtotal: R$3,99
-
-Valor total dos produtos: R$3,99
+Valor total dos produtos: R$20,18
 
 Taxa de entrega: R$7,00
-Valor total da compra: R$10,99
-Forma de pagamento: Credito
-
-
------ Nova Compra -----
-Data e horário da compra: 11/04/2024 11:30:26
-
-Produtos comprados:
-Codigo Produto: 19, Produto: Pipoca doce, Quantidade: 1, Preço Unitário: R$4,50, Subtotal: R$4,50
-
-Valor total dos produtos: R$4,50
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$11,50
-Forma de pagamento: Debito
-
-
------ Nova Compra -----
-Data e horário da compra: 12/04/2024 09:05:09
-
-Produtos comprados:
-Codigo Produto: 28, Produto: Trufas, Quantidade: 5, Preço Unitário: R$3,00, Subtotal: R$15,00
-Codigo Produto: 27, Produto: Caixa de bombom, Quantidade: 1, Preço Unitário: R$8,99, Subtotal: R$8,99
-
-Valor total dos produtos: R$23,99
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$30,99
-Forma de pagamento: Debito
-
-
------ Nova Compra -----
-Data e horário da compra: 12/04/2024 10:44:58
-
-Produtos comprados:
-Codigo Produto: 25, Produto: Paçoca, Quantidade: 10, Preço Unitário: R$0,50, Subtotal: R$5,00
-Codigo Produto: 28, Produto: Trufas, Quantidade: 2, Preço Unitário: R$3,00, Subtotal: R$6,00
-
-Valor total dos produtos: R$11,00
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$18,00
+Valor total da compra: R$27,18
 Forma de pagamento: PIX
-
-
------ Nova Compra -----
-Data e horário da compra: 12/04/2024 10:50:22
-
-Produtos comprados:
-Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 5, Preço Unitário: R$3,99, Subtotal: R$19,95
-
-Valor total dos produtos: R$19,95
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$26,95
-Forma de pagamento: Debito
-
-
------ Nova Compra -----
-Data e horário da compra: 12/04/2024 10:51:41
-
-Produtos comprados:
-Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 5, Preço Unitário: R$3,99, Subtotal: R$19,95
-
-Valor total dos produtos: R$19,95
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$26,95
-Forma de pagamento: Debito
-
-
------ Nova Compra -----
-Data e horário da compra: 12/04/2024 10:58:18
-
-Produtos comprados:
-Codigo Produto: 30, Produto: Ovo de pascoa, Quantidade: 1, Preço Unitário: R$50,00, Subtotal: R$50,00
-
-Valor total dos produtos: R$50,00
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$57,00
-Forma de pagamento: Boleto
-
-
------ Nova Compra -----
-Data e horário da compra: 12/04/2024 11:12:33
-
-Produtos comprados:
-Codigo Produto: 23, Produto: Brigadeiros, Quantidade: 5, Preço Unitário: R$6,99, Subtotal: R$34,95
-
-Valor total dos produtos: R$34,95
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$41,95
-Forma de pagamento: Credito
-
-
------ Nova Compra -----
-Data e horário da compra: 13/04/2024 17:22:16
-
-Produtos comprados:
-Codigo Produto: 33, Produto: Barra de chocolate, Quantidade: 4, Preço Unitário: R$3.99, Subtotal: R$15.96
-
-Valor total dos produtos: R$15.96
-
-Taxa de entrega: R$7.00
-Valor total da compra: R$22.96
-Forma de pagamento: Debito
-
-
------ Nova Compra -----
-Data e horário da compra: 14/04/2024 20:35:59
-
-Produtos comprados:
-Codigo Produto: 31, Produto: Pe de moleque, Quantidade: 10, Preço Unitário: R$2.56, Subtotal: R$25.60
-Codigo Produto: 29, Produto: Caixa de bombom, Quantidade: 1, Preço Unitário: R$8.99, Subtotal: R$8.99
-
-Valor total dos produtos: R$34.59
-
-Taxa de entrega: R$7.00
-Valor total da compra: R$41.59
-Forma de pagamento: PIX
-
-
------ Nova Compra -----
-Data e horário da compra: 16/04/2024 08:35:04
-
-Produtos comprados:
-Codigo Produto: 14, Produto: Pacote de Balas, Quantidade: 2, Preço Unitário: R$4,99, Subtotal: R$9,98
-Codigo Produto: 23, Produto: Brigadeiros, Quantidade: 4, Preço Unitário: R$6,99, Subtotal: R$27,96
-
-Valor total dos produtos: R$37,94
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$44,94
-Forma de pagamento: PIX
-
-
------ Nova Compra -----
-Data e horário da compra: 16/04/2024 08:52:42
-
-Produtos comprados:
-Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 10, Preço Unitário: R$3,99, Subtotal: R$39,90
-
-Valor total dos produtos: R$39,90
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$46,90
-Forma de pagamento: Boleto
-
-
------ Nova Compra -----
-Data e horário da compra: 16/04/2024 09:02:02
-
-Produtos comprados:
-Codigo Produto: 55, Produto: Ovo de páscoa ao leite 200g, Quantidade: 2, Preço Unitário: R$20,99, Subtotal: R$41,98
-
-Valor total dos produtos: R$41,98
-
-Taxa de entrega: R$7,00
-Valor total da compra: R$48,98
-Forma de pagamento: Boleto
 
