@@ -16,7 +16,7 @@ public class MainCliente {
     private static CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
     private static ProdutosDAO produtosDAO = new ProdutosDAO();
     private static ManipuladorArquivos manipuladorArquivos = new ManipuladorArquivos();
-    private static ComprasDAO dadosDeCompraDAO = new ComprasDAO();
+    private static ComprasDAO comprasDAO = new ComprasDAO();
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
@@ -183,7 +183,7 @@ public class MainCliente {
             }
 
           manipuladorArquivos.escreverNoArquivo(carrinho.calcularTotal(), TAXA_DE_ENTREGA, VALOR_TOTAL_COMPRA, opcaoPagamento, carrinho.getItens());
-          dadosDeCompraDAO.salvarCompra(carrinho.calcularTotal(), TAXA_DE_ENTREGA, VALOR_TOTAL_COMPRA, opcaoPagamento, carrinho.getItens());
+          comprasDAO.salvarCompra(carrinho.calcularTotal(), TAXA_DE_ENTREGA, VALOR_TOTAL_COMPRA, opcaoPagamento, carrinho.getItens());
         }
         carrinho.limparCarrinho();
     }
