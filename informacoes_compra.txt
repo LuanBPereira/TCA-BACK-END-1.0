@@ -169,3 +169,43 @@ Taxa de entrega: R$7.00
 Valor total da compra: R$41.59
 Forma de pagamento: PIX
 
+
+----- Nova Compra -----
+Data e horário da compra: 16/04/2024 08:35:04
+
+Produtos comprados:
+Codigo Produto: 14, Produto: Pacote de Balas, Quantidade: 2, Preço Unitário: R$4,99, Subtotal: R$9,98
+Codigo Produto: 23, Produto: Brigadeiros, Quantidade: 4, Preço Unitário: R$6,99, Subtotal: R$27,96
+
+Valor total dos produtos: R$37,94
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$44,94
+Forma de pagamento: PIX
+
+
+----- Nova Compra -----
+Data e horário da compra: 16/04/2024 08:52:42
+
+Produtos comprados:
+Codigo Produto: 31, Produto: Barra de chocolate, Quantidade: 10, Preço Unitário: R$3,99, Subtotal: R$39,90
+
+Valor total dos produtos: R$39,90
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$46,90
+Forma de pagamento: Boleto
+
+
+----- Nova Compra -----
+Data e horário da compra: 16/04/2024 09:02:02
+
+Produtos comprados:
+Codigo Produto: 55, Produto: Ovo de páscoa ao leite 200g, Quantidade: 2, Preço Unitário: R$20,99, Subtotal: R$41,98
+
+Valor total dos produtos: R$41,98
+
+Taxa de entrega: R$7,00
+Valor total da compra: R$48,98
+Forma de pagamento: Boleto
+
